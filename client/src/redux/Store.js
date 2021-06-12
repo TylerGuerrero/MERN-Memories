@@ -8,6 +8,6 @@ import { rootReducer } from './RootReducer'
 const logger = createLogger()
 const middleware = [logger, thunk]
 
-export const store = (rootReducer,
+export const store = createStore(rootReducer,
     composeWithDevTools(applyMiddleware(...middleware))
 )

@@ -6,15 +6,15 @@ import memories from './images/memories.png'
 import Posts from './components/Posts/Posts'
 import Form from './components/Form/Form'
 import useStyles from './styles'
-import { FETCH_ALL } from './redux/Post/Type'
+import { getPosts } from './redux/Post/actions/FetchPostAction'
 
 const App = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   
   useEffect(() => {
-
-  }, [])
+    dispatch(getPosts())
+  }, [dispatch]) 
 
   return (
     <Container maxWidth="lg">

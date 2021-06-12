@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import { postReducer } from './Post/reducers/PostReducer'
+import { fetchPostReducer } from './Post/reducers/PostFetchReducer'
+import { createPostReducer} from './Post/reducers/PostCreateReducer'
 
 export const rootReducer = combineReducers({
-    posts: postReducer
+    posts: fetchPostReducer,
+    newPost: createPostReducer
 })

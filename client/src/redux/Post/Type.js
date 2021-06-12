@@ -1,2 +1,7 @@
-export const FETCH_ALL = 'FETCH_ALL'
-export const CREATE = 'CREATE'
+export const FETCH_ALL_REQUEST = 'FETCH_ALL_REQUEST'
+export const FETCH_ALL_SUCCESS = 'FETCH_ALL_SUCCESS'
+export const FETCH_ALL_ERROR = 'FETCH_ALL_ERROR'
+
+export const CREATE_REQUEST = 'CREATE_REQUEST'
+export const CREATE_SUCCESS = 'CREATE_SUCCESS'
+export const CREATE_ERROR = 'CREATE_ERROR'
