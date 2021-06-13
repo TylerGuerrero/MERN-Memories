@@ -13,3 +13,10 @@ export const createPost = async (newPost) => {
 export const putPost = async (id, updatedPost) => {
   return await axios.put(`${url}/${id}`, updatedPost)
 }
+export const deletePost = async (id) => {
+  return await axios.delete(`${url}/${id}`)
+}
+
+export const likePost = async (id) => {
+  return await axios.put(`${url}/${id}/likePost`)
+}

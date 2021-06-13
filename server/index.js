@@ -34,7 +34,7 @@ mongoose.connection.once('open', () => {
     console.log('MongoDB is running')
 })
 
-mongoose.set('useFindAndModify', true)
+mongoose.set('useFindAndModify', false)
 
 app.use(express.json({limit: "30mb"}))
 app.use(express.urlencoded({extended: true, limit: "30mb"}))
@@ -49,7 +49,7 @@ app.use(session({
 
 app.use('/posts', postRoutes)
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`)
 })

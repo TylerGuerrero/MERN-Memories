@@ -11,7 +11,7 @@ const Posts = ({ setCurrentId }) => {
     return (
         <React.Fragment>
             { loading && <CircularProgress /> }
-            { posts && 
+            { (posts && !loading) && 
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
                 { posts.map((post) => {
                     return (

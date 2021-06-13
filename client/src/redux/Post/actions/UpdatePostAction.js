@@ -34,7 +34,6 @@ export const updatePost = (id, updatedPost) => async (dispatch) => {
     
     try {   
         const { data } = await api.putPost(id, updatedPost)
-        console.log(data)
         dispatch(updatePostSuccess(data))
     } catch (err) {
         dispatch(updatePostError(err.message))
