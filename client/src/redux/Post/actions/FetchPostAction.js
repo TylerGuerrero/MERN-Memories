@@ -33,7 +33,7 @@ export const getPosts = () => async (dispatch) => {
     dispatch(getPostRequest())
     
     try {
-        const { data } = api.fetchPost()
+        const { data } = await api.fetchPost()
         dispatch(getPostSuccess(data))
     } catch (error) {
         dispatch(getPostFailure(error.message))

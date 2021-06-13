@@ -9,3 +9,7 @@ export const fetchPost = async () => {
 export const createPost = async (newPost) => {
   return await axios.post(url, newPost)
 }
+
+export const putPost = async (id, updatedPost) => {
+  return await axios.put(`${url}/${id}`, updatedPost)
+}
