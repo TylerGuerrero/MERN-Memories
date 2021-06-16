@@ -11,8 +11,6 @@ const Form = ({ currentId, setCurrentId }) => {
     const [post, setPost] = useState({creator: "", title: "", message: "", tags: "", selectedFile: ""})
     const classes = useStyles()
     const dispatch = useDispatch()
-    // const newPost = useSelector((state) => state.newPost)
-    // const { updatedPost } = useSelector((state) => state.updatedPost)
     const currentPost = useSelector((state) => currentId ? state.posts.posts.find((p) => p._id === currentId) : null)
 
     useEffect(() => {
