@@ -7,6 +7,7 @@ import session from 'express-session'
 import { default as connect } from 'connect-mongodb-session'
 
 import postRoutes from './routes/PostsRoutes.js'
+import userRoutes from './routes/UserRoutes.js'
 
 const app = express()
 const MongoDBStore = connect(session)
@@ -52,6 +53,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/posts', postRoutes)
+app.use('/user', userRoutes)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {

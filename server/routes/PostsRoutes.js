@@ -1,7 +1,9 @@
 import express from 'express'
 import mongoose from 'mongoose'
+
 import { getPosts } from '../controllers/PostController.js'
 import PostMessage from '../models/PostModel.js'
+import { auth } from '../middleware/Auth.js'
 
 const router = express.Router()
 
@@ -15,7 +17,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
    const post = req.body
 
    try {
@@ -27,7 +29,7 @@ router.post('/', async (req, res) => {
    }
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
     const { id: _id } = req.params
     const post = req.body
 
@@ -43,7 +45,7 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     const { id: _id } = req.params
     
     if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(401).json({err: 'Id is not valid'})
@@ -57,8 +59,10 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
-router.put('/:id/likePost', async (req, res) => {
+router.put('/:id/likePost', auth, async (req, res) => {
     const { id: _id } = req.params
+
+    if (!req.userId) return res.status(400).json({message: "Unauthenticated"})
 
     if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(401).json({err: 'Invalid Id'})
 

@@ -12,17 +12,24 @@ import { authSuccess, authError } from '../../redux/Auth/actions/AuthActions'
 const Auth = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [isSignUp, setIsSignUp] = useState(false)
-    // const [formInputs, setFormInputs] = useState({firstName: "", lastName: "", email: "", password: "", confirmPassword: ""})
+    const [formInputs, setFormInputs] = useState({firstName: "", lastName: "", email: "", password: "", confirmPassword: ""})
     const dispatch = useDispatch()
     const classes = useStyles()
     const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log(formInputs)
+
+        if (isSignUp) {
+
+        } else {
+            
+        }
     }
 
     const handleChange = (e) => {
-
+        setFormInputs({...formInputs, [e.target.name]: e.target.value})
     }
 
     const googleSuccess = async (res) => {
