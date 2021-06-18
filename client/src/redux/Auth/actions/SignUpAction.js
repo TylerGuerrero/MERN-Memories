@@ -8,10 +8,10 @@ export const signUpRequest = () => {
     }
 }
 
-export const signUpSuccess = (user) => {
+export const signUpSuccess = (userData) => {
     return {
-        type: types.SIGN_UP_SUCCESS,
-        payload: user
+        type: types.AUTH_SUCCESS,
+        payload: userData
     }
 }
 
@@ -22,12 +22,12 @@ export const signUpError = (error) => {
     }
 }
 
-export const singUpAction = (formData, history) => (dispatch) => {
+export const signUpAction = (formData, history) => async (dispatch) => {
     dispatch(signUpRequest())
 
     try {
-        const user = await api
-        dispatch(signUpSuccess(user))
+        const { data } = await api.signUp(formData)
+        dispatch(signUpSuccess(data))
         history.push("/")
     } catch (error) {
         dispatch(signUpError(error))

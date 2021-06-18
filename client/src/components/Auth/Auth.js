@@ -4,10 +4,14 @@ import { GoogleLogin } from 'react-google-login'
 import { LockOutlined } from '@material-ui/icons'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+
 import useStyles from './styles'
 import Input from './Input'
 import Icon from './Icon'
 import { authSuccess, authError } from '../../redux/Auth/actions/AuthActions'
+import { signInAction } from '../../redux/Auth/actions/SignInActions'
+import { signUpAction } from '../../redux/Auth/actions/SignUpAction'
+
 
 const Auth = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -22,9 +26,9 @@ const Auth = () => {
         console.log(formInputs)
 
         if (isSignUp) {
-
+            dispatch(signUpAction(formInputs, history))
         } else {
-            
+            dispatch(signInAction(formInputs, history))
         }
     }
 

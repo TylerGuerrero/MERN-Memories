@@ -8,10 +8,10 @@ export const signInRequest = () => {
     }
 }
 
-export const signInSuccess = (user) => {
+export const signInSuccess = (userData) => {
     return {
-        type: types.SIGN_IN_SUCCESS,
-        payload: user
+        type: types.AUTH_SUCCESS,
+        payload: userData
     }
 }
 
@@ -22,14 +22,14 @@ export const signInError = (error) => {
     }
 }
 
-export const signInAction = (formData, history) => (dispatch) => {
+export const signInAction = (formData, history) => async (dispatch) => {
     dispatch(signInRequest())
 
     try {
-        const user = await api  
-        dispatch(signInSuccess(user))
+        const { data } = await api.signIn(formData) 
+        dispatch(signInSuccess(data))
         history.push('/')
     } catch (error) {
         dispatch(signInError(error))
-    }
+    }       
 } 

@@ -8,7 +8,7 @@ const postSchema = new Schema({
     creator: {type: String, required: true},
     tags: {type: [String], required: true},
     selectedFile: {type: String, required: true},
-    likeCount: {type: Number, required: true, default: 0},
+    likes: {type: [String], required: true, default: []},
 }, {timestamps: true})
 
 const PostMessage = model('Post', postSchema)

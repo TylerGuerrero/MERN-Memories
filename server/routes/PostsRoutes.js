@@ -68,7 +68,15 @@ router.put('/:id/likePost', auth, async (req, res) => {
 
     try {
         const post = await PostMessage.findById(_id)
-        const updatedPost = await PostMessage.findByIdAndUpdate(_id, {likeCount: post.likeCount + 1}, {new: true})
+        const index = post.likes.findIndex((id) => id === String(req.userId))
+
+        if (index === -1) {
+            post.likes.push(req.userId)
+        } else {
+            post.likes = post.likes.filter((id) !== String(req.userId))
+        }
+
+        const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new: true})
         return res.status(201).json(updatedPost)
     } catch (err) {
         console.log(err)
